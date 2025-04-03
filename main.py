@@ -30,11 +30,12 @@ def Tarjetas(productos):
                 Box(
                     {"sx": {"bgcolor": "background.paper"}},
                     Typography({"variant": "h5"}, producto['nombre']),
-                    Rating(
-                        {"name": "half-rating", "precision": "0.5"},
-                        producto['rating'],
-                    
-                    ),
+                    Rating({
+                        "reaOnly": True, 
+                        "name": "half-rating", 
+                        "precision": "0.5",
+                        "value": producto['rating']
+                    }),
                     Typography({"variant": "body2"}, producto['descripcion']),
                     Typography({"variant": "h5"}, producto['precio']),
                 ),
