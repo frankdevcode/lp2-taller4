@@ -6,7 +6,10 @@ from datos import productos
 mui = web.module_from_template("react", "@mui/material", fallback="🔥")
 Container = web.export(mui, "Container")
 Grid = web.export(mui, "Grid")
-Paper = web.export(mui, "paper")
+Paper = web.export(mui, "Paper")
+Box = web.export(mui, "Box")
+Typography = web.export(mui, "Typography")
+Rating = web.export(mui, "Rating")
 
 def Tarjetas(productos):
     def Tarjeta(producto):
@@ -14,8 +17,28 @@ def Tarjetas(productos):
             {"item": True, "sm": 6, "md": 3, "lg": 3},
             Paper(
                 {"elevation": 4},
-                html.h1(producto["nombre"]),
-            )
+                html.img({
+                    "src": "https://picsum.photos/id/{producto['id']}/400/100",
+                    "class_name": "img-fluid",
+                    "alt": producto["nombre"],
+                    "style": {
+                        "width": "100%",
+                        "height": "auto",
+                        "border-radius": "10px",
+                    },
+                }),
+                Box(
+                    {"sx": {"bgcolor": "background.paper"}},
+                    Typography({"variant": "h5"}, producto['nombre']),
+                    Rating(
+                        {"name": "half-rating", "precision": "0.5"},
+                        producto['rating'],
+                    
+                    ),
+                    Typography({"variant": "body2"}, producto['descripcion']),
+                    Typography({"variant": "h5"}, producto['precio']),
+                ),
+            ),
         ),
 
     return Grid(
