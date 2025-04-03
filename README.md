@@ -28,7 +28,7 @@ git clone https://github.com/UR-CC/lp2-taller4.git
 ```bash
 cd lp2-taller4
 python -m venv venv
-venv/bin/activate
+venv/Scripts/activate
 ```
 
 3. Instalar librerías y dependencias
